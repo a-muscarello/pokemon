@@ -5,13 +5,58 @@
 // add trainer name - 'gunn'
 // link to github
 
+class Trainer {
+	constructor() {
+		this.pokemon = [];
+	}
+	add(newPokemon) {
+		this.pokemon.push(newPokemon);
+	}
+	pokemonGet (name) {
+	var result = '';
+	for (let i in name) {
+		if (name.hasOwnProperty(i)) {
+			result += name
+		}
+	return pokemon;
+	}
+	
+}
+}
 
-// $(document).ready(function() {
+class Pokemon {
+	constructor (name, sprites, hp, attack, abilities, defense) {
+		this.name = name,
+		this.sprites = sprites,
+		this.hp = hp,
+		this.attack = attack,
+		this.abilities = abilities,
+		this.defense = defense
+	}
+}
+
+function displayAll() {
+	for(let i=0; i < this.pokemon.length; i++) {
+		console.log(this.pokemon[i])
+	}
+}
+
+// have a method named get
+// accepts 1 parameter called name
+// returns a Pokemon object housing information for the pokemon it found
+
+
+
+let gunn =  new Trainer;
+
+let getVulpix = function () {
 	
 	$.ajax({
 	url:'https://pokeapi.co/api/v2/pokemon/vulpix/' ,
-	type: 'GET',
+	dataType: 'json',
+	method: 'GET',
 	success: function(data) {
+		// console.log(data);
 
 		let name = data.name
 		let	sprites = data.sprites.front_default
@@ -21,8 +66,10 @@
 		let	abilities1 = data.abilities[1].ability.name
 		let	defense = data.stats[0].base_stat	
 		
+		let newPokemon = new Pokemon (name,sprites,hp,attack,abilities,defense);
+		gunn.add(newPokemon);
+
 		let newDiv = $('<div></div>');
-		console.log('newDiv');
 
 		$(newDiv).append('<div class="name">' + name + '</div>');
 		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
@@ -31,45 +78,30 @@
 		$(newDiv).append('<div class ="abilities">' + abilities + ' and' + ' ' + abilities1 +'</div>');
 		$(newDiv).append('<div class ="defense">' + defense + '</div>');
 		
-		$('.back').append(newDiv);
-		
-// 		$.ajax({
-// 		url:'https://pokeapi.co/api/v2/pokemon/ninetales/',
-// 		type: 'GET',
-// 		success: function(data) {
-		
-// 		let name = data.name
-// 		let	sprites = data.sprites.front_default
-// 		let	hp = data.stats[5].base_stat
-// 		let	attack = data.stats[4].base_stat
-// 		let	abilities = data.abilities[0].ability.name
-// 		let	abilities1 = data.abilities[1].ability.name
-// 		let	abilities1 = data.abilities[2].ability.name
-// 		let	defense = data.stats[3].base_stat	
+		$('#col-1 .front').append(newDiv);
 
-// 		let newDiv = $('<div></div>');
-// 		console.log('newDiv');
-
-// 		$(newDiv).append('<div class="name">' + name + '</div>');
-// 		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
-// 		$(newDiv).append('<div class="hp">' + hp + '</div>');
-// 		$(newDiv).append('<div class ="attack">' + attack + '</div>');
-// 		$(newDiv).append('<div class ="abilities">' + abilities + ' and' + ' ' + abilities1 +'</div>');
-// 		$(newDiv).append('<div class ="defense">' + defense + '</div>');
-		
-// 		$('.back').append(newDiv);
+		// window.fadeIn = function (obj) {
+		// 	$(obj).fadeIn(2000);
+		// }
+		// $(".card-image").on("click", "col-1", function () {
+		// 	$(this).fadeTo('slow', 0.5);
 
 	}
 });
-// steelix 
-// $(document).ready(function() {
+};
+
+	// window.addEventListener('click', function() {
+	// 	$("#card").flip();
+	// });
+
+let getSteelix = function () {
 	
 	$.ajax({
 	url: "https://pokeapi.co/api/v2/pokemon/steelix/",
-	// url:'https://pokeapi.co/api/v2/pokemon/' + num,
-	type: 'GET',
+	dataType: 'json',
+	method: 'GET',
 	success: function(data) {
-  	console.log(data);
+  	// console.log(data);
 
 		let name = data.name
 		let	sprites = data.sprites.front_default
@@ -78,10 +110,12 @@
 		let	abilities = data.abilities[0].ability.name
 		let	abilities1 = data.abilities[1].ability.name
 		let	abilities2 = data.abilities[2].ability.name
-		let	defense = data.stats[3].base_stat	
-		
+		let	defense = data.stats[3].base_stat
+
+		let newPokemon = new Pokemon (name,sprites,hp,attack,abilities,defense);
+		gunn.add(newPokemon);
+
 		let newDiv = $('<div></div>');
-		console.log('newDiv');
 
 		$(newDiv).append('<div class="name">' + name + '</div>');
 		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
@@ -90,58 +124,20 @@
 		$(newDiv).append('<div class ="abilities">' + abilities + ',' + ' ' + abilities1 + ' and' + ' ' + abilities2 +'</div>');
 		$(newDiv).append('<div class ="defense">' + defense + '</div>');
 		
-		$('.back').append(newDiv);
-		
-// 		$.ajax({
-// 		url:'https://pokeapi.co/api/v2/pokemon/onix/',
-// 		type: 'GET',
-// 		success: function(data) {
-		
-// 		let name = data.name
-// 		let	sprites = data.sprites.front_default
-// 		let	hp = data.stats[5].base_stat
-// 		let	attack = data.stats[4].base_stat
-// 		let	abilities = data.abilities[0].ability.name
-// 		let	abilities1 = data.abilities[1].ability.name
-// 		let	abilities2 = data.abilities[2].ability.name
-// 		let	defense = data.stats[3].base_stat	
-		
-// 		let newDiv = $('<div></div>');
-// 		console.log('newDiv');
-
-// 		$(newDiv).append('<div class="name">' + name + '</div>');
-// 		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
-// 		$(newDiv).append('<div class="hp">' + hp + '</div>');
-// 		$(newDiv).append('<div class ="attack">' + attack + '</div>');
-// 		$(newDiv).append('<div class ="abilities">' + abilities + ' and' + ' ' + abilities1 +'</div>');
-// 		$(newDiv).append('<div class ="defense">' + defense + '</div>');
-		
-// 		$('.back').append(newDiv);
+		$('#col-2 .front').append(newDiv);
 	}
 });
-		// document.getElementById("card").innerHTML = 'Pokemon';
-		
-
-	// document.getElementsByClassName('front').append(steelix)
+};
 
 
-	// document.getElementsByClassName('back').append(onix)
-	
+let getRhydon = function () {
 
-		window.addEventListener('click', function() {
-			// document.getElementsByClassName('back').innerHTML = 
-			$("#card").flip().append(data.onix);
-		});
-
-// rhydon
-// $(document).ready(function() {
-	
 	$.ajax({
 	url:'https://pokeapi.co/api/v2/pokemon/rhydon/',
-	// url:'https://pokeapi.co/api/v2/pokemon/' + num,
-	type: 'GET',
+	dataType: 'json',
+	method: 'GET',
 	success: function(data) {
-  	console.log(data);
+  	// console.log(data);
 		
 		let name = data.name
 		let	sprites = data.sprites.front_default
@@ -151,9 +147,12 @@
 		let	abilities1 = data.abilities[1].ability.name
 		let	abilities2 = data.abilities[2].ability.name
 		let	defense = data.stats[0].base_stat	
+
+		let newPokemon = new Pokemon (name,sprites,hp,attack,abilities,defense);
+		gunn.add(newPokemon);
 		
 		let newDiv = $('<div></div>');
-		console.log('newDiv');
+
 
 		$(newDiv).append('<div class="name">' + name + '</div>');
 		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
@@ -162,35 +161,14 @@
 		$(newDiv).append('<div class ="abilities">' + abilities + ', ' + ' ' + abilities1 + ' and' + ' ' + abilities2 +'</div>');
 		$(newDiv).append('<div class ="defense">' + defense + '</div>');
 		
-		$('.back').append(newDiv);
-		
-// 		$.ajax({
-// 		url:'https://pokeapi.co/api/v2/pokemon/rhyperior/',
-// 		type: 'GET',
-// 		success: function(data) {
-		
-// 		let name = data.name
-// 		let	sprites = data.sprites.front_female
-// 		let	hp = data.stats[5].base_stat
-// 		let	attack = data.stats[4].base_stat
-// 		let	abilities = data.abilities[0].ability.name
-// 		let	abilities1 = data.abilities[1].ability.name
-// 		let	abilities2 = data.abilities[2].ability.name
-// 		let	defense = data.stats[3].base_stat	
-
-// 		let newDiv = $('<div></div>');
-// 		console.log('newDiv');
-
-// 		$(newDiv).append('<div class="name">' + name + '</div>');
-// 		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
-// 		$(newDiv).append('<div class="hp">' + hp + '</div>');
-// 		$(newDiv).append('<div class ="attack">' + attack + '</div>');
-// 		$(newDiv).append('<div class ="abilities">' + abilities + ' and' + ' ' + abilities1 +'</div>');
-// 		$(newDiv).append('<div class ="defense">' + defense + '</div>');
-		
-// 		$('.back').append(newDiv);
+		$('#col-3 .front').append(newDiv);
 
 	}
-});
-		// document.getElementById("card").innerHTML = 'Pokemon';
-		
+	});
+};
+
+getVulpix();
+getSteelix();
+getRhydon();
+	
+
