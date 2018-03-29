@@ -80,6 +80,7 @@ let getPokemon = function (pokemonId) {
 		$('#col-1 .front').append(newDiv);
 	}
 });
+	
 };
 
 
