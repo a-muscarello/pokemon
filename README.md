@@ -11,7 +11,7 @@ My version of pokedex were cards that displayed the designated pokemon informati
     - create at least 3 pokemons with information such as their hp, attack, properties etc.
     - link to the pokemon api to get this information
     - store each pokemon in an object, which has the above-mentioned properties
-    - store these objects in another object (named your trainer name, in this case 'gunn')
+    - store these objects inb  another object (named your trainer name, in this case 'gunn')
        -  have a method named 'all' that accepts no param and returns an array of pokemon objects
     -  another method named 'get' that accepts a param (name) and returns info on pokemon
     - use ajax call to retrieve the pokemon info
@@ -19,5 +19,5 @@ My version of pokedex were cards that displayed the designated pokemon informati
     - use materialize as grid
 
 Challenges
-I Googled a lot of information, which was helpful but also received a lot of help. It was a true learning project in that I learned how little I kniew.
+I Googled a lot of information, which was helpful but also received a huge amount of help. It was a true learning project in that I learned how little I knew, yet again.
 
