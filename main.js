@@ -12,13 +12,29 @@ class Trainer {
 	add(newPokemon) {
 		this.pokemon.push(newPokemon);
 	}
-	pokemonGet (name) {
-	var result = '';
-	for (let i in name) {
-		if (name.hasOwnProperty(i)) {
-			result += name
+	getPokemon(name) {
+
+	for (let i=0; i<this.pokemon.length; i++) {
+		if (name.name == this.pokemon[i].name) {
+		
+		let newDiv = $('<div></div>');
+		let column = `#col-${i + 1} .front`;
+		let abilitiesDiv = $('<div class="abilities">ABILITIES:</div>');
+
+		$(newDiv).append('<div class="name">' + 'NAME: ' + this.pokemon[i].name + '    ' +  '#37' + '</div>');
+		$(newDiv).append(`<img class="sprites" src='${this.pokemon[i].sprites}'>`);
+		$(newDiv).append('<div class="hp">' + 'HP: ' + this.pokemon[i].hp + '   ' + '</div>');
+		$(newDiv).append('<div class ="attack">' + 'ATTACK: ' + this.pokemon[i].attack +  '  ' + '</div>');
+
+		console.log(this.pokemon[i])
+		for (let j=0; j<this.pokemon[i].abilities.length; j++) {
+			$(abilitiesDiv).append('<div>' + this.pokemon[i].abilities[j].ability.name + '</div>');
 		}
-	return pokemon;
+		$(newDiv).append(abilitiesDiv);
+		$(newDiv).append('<div class ="defense">' + 'DEFENSE: ' + this.pokemon[i].defense + '  ' + '</div>');
+	
+		$(column).append(newDiv);
+		}
 	}
 	
 }
@@ -41,12 +57,6 @@ function displayAll() {
 	}
 }
 
-// have a method named get
-// accepts 1 parameter called name
-// returns a Pokemon object housing information for the pokemon it found
-
-
-
 let gunn =  new Trainer;
 
 let getVulpix = function () {
@@ -62,38 +72,18 @@ let getVulpix = function () {
 		let	sprites = data.sprites.front_default
 		let	hp = data.stats[5].base_stat
 		let	attack = data.stats[0].base_stat
-		let	abilities = data.abilities[0].ability.name
-		let	abilities1 = data.abilities[1].ability.name
+		let newAbilities = data.abilities;
 		let	defense = data.stats[0].base_stat	
 		
-		let newPokemon = new Pokemon (name,sprites,hp,attack,abilities,defense);
+		let newPokemon = new Pokemon (name,sprites,hp,attack,newAbilities,defense);
 		gunn.add(newPokemon);
-
-		let newDiv = $('<div></div>');
-
-		$(newDiv).append('<div class="name">' + name + '</div>');
-		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
-		$(newDiv).append('<div class="hp">' + hp + '</div>');
-		$(newDiv).append('<div class ="attack">' + attack + '</div>');
-		$(newDiv).append('<div class ="abilities">' + abilities + ' and' + ' ' + abilities1 +'</div>');
-		$(newDiv).append('<div class ="defense">' + defense + '</div>');
+		gunn.getPokemon(newPokemon);
 		
-		$('#col-1 .front').append(newDiv);
-
-		// window.fadeIn = function (obj) {
-		// 	$(obj).fadeIn(2000);
-		// }
-		// $(".card-image").on("click", "col-1", function () {
-		// 	$(this).fadeTo('slow', 0.5);
-
 	}
 });
 };
 
-	// window.addEventListener('click', function() {
-	// 	$("#card").flip();
-	// });
-
+	
 let getSteelix = function () {
 	
 	$.ajax({
@@ -107,29 +97,19 @@ let getSteelix = function () {
 		let	sprites = data.sprites.front_default
 		let	hp = data.stats[5].base_stat
 		let	attack = data.stats[4].base_stat
-		let	abilities = data.abilities[0].ability.name
-		let	abilities1 = data.abilities[1].ability.name
-		let	abilities2 = data.abilities[2].ability.name
+		let newAbilities = data.abilities;
 		let	defense = data.stats[3].base_stat
 
-		let newPokemon = new Pokemon (name,sprites,hp,attack,abilities,defense);
+		let newPokemon = new Pokemon (name,sprites,hp,attack,newAbilities,defense);
 		gunn.add(newPokemon);
-
-		let newDiv = $('<div></div>');
-
-		$(newDiv).append('<div class="name">' + name + '</div>');
-		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
-		$(newDiv).append('<div class="hp">' + hp + '</div>');
-		$(newDiv).append('<div class ="attack">' + attack + '</div>');
-		$(newDiv).append('<div class ="abilities">' + abilities + ',' + ' ' + abilities1 + ' and' + ' ' + abilities2 +'</div>');
-		$(newDiv).append('<div class ="defense">' + defense + '</div>');
+		gunn.getPokemon(newPokemon);
 		
-		$('#col-2 .front').append(newDiv);
 	}
 });
 };
-
-
+// window.addEventListener('click', function() {
+	// 	$("#card").flip();
+	// });
 let getRhydon = function () {
 
 	$.ajax({
@@ -143,25 +123,14 @@ let getRhydon = function () {
 		let	sprites = data.sprites.front_default
 		let	hp = data.stats[0].base_stat
 		let	attack = data.stats[0].base_stat
-		let	abilities = data.abilities[0].ability.name
-		let	abilities1 = data.abilities[1].ability.name
-		let	abilities2 = data.abilities[2].ability.name
+		let newAbilities = data.abilities;
 		let	defense = data.stats[0].base_stat	
-
-		let newPokemon = new Pokemon (name,sprites,hp,attack,abilities,defense);
+		let newPokemon = new Pokemon (name,sprites,hp,attack,newAbilities,defense);
+		
 		gunn.add(newPokemon);
+		gunn.getPokemon(newPokemon);
 		
 		let newDiv = $('<div></div>');
-
-
-		$(newDiv).append('<div class="name">' + name + '</div>');
-		$(newDiv).append(`<img class="sprites" src='${sprites}'>`);
-		$(newDiv).append('<div class="hp">' + hp + '</div>');
-		$(newDiv).append('<div class ="attack">' + attack + '</div>');
-		$(newDiv).append('<div class ="abilities">' + abilities + ', ' + ' ' + abilities1 + ' and' + ' ' + abilities2 +'</div>');
-		$(newDiv).append('<div class ="defense">' + defense + '</div>');
-		
-		$('#col-3 .front').append(newDiv);
 
 	}
 	});

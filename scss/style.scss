@@ -10,7 +10,7 @@ body {
 	padding: 10px;
 	background: linear-gradient(to top, #393f3b 20%, #3d4c42 80%);
 	height: 500px;
-	width: 320px;
+	width: 100%;
 /*	border-radius: 20px;*/
 	text-align: center;
 	color: white;
@@ -19,15 +19,25 @@ body {
 	mix-blend-mode: multiply;
 	box-shadow: 10px 10px 5px grey;
 }
-/*
-#sprites {
+
+.card .card-image img {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.sprites {
+/*	display: none;*/
+	width: 50%;
+}
+
+/*#sprites {
 	visibility: hidden;
 }
 
 #sprites:hover {
 	visibility: visible;
 }
-
+*/
 
 /*#col-1 {
 	position: absolute;
@@ -55,7 +65,7 @@ body {
 	flex: 1;
 }
 /*
-*/
+
 /*
 #card {
 	padding: 10px;
